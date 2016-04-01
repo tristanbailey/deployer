@@ -5,7 +5,7 @@ namespace REBELinBLUE\Deployer;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Model for SSH keys
+ * Model for SSH keys.
  */
 class Key extends Model
 {

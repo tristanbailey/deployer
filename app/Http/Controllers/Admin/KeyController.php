@@ -9,4 +9,5 @@ use REBELinBLUE\Deployer\Http\Controllers\Resources\ResourceController as Contro
  */
 class KeyController extends Controller
 {
+    //
 }

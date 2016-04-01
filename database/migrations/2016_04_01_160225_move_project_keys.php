@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-use REBELinBLUE\Deployer\Project;
+use Illuminate\Database\Schema\Blueprint;
 use REBELinBLUE\Deployer\Key;
+use REBELinBLUE\Deployer\Project;
 
 class MoveProjectKeys extends Migration
 {
@@ -28,7 +27,7 @@ class MoveProjectKeys extends Migration
             $key = Key::create([
                 'name'        => $project->name,
                 'private_key' => $project->private_key,
-                'public_key'  => $project->public_key
+                'public_key'  => $project->public_key,
             ]);
 
             $project->key_id = $key->id;
