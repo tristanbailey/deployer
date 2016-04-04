@@ -18,6 +18,10 @@ Route::group([
         'only' => ['index', 'store', 'update', 'destroy'],
     ]);
 
+    Route::resource('keys', 'KeyController', [
+        'only' => ['index'],
+    ]);
+
     Route::resource('groups', 'GroupController', [
         'only' => ['index', 'store', 'update'],
     ]);

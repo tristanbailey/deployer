@@ -11,6 +11,7 @@ return [
     'templates'         => 'Templates',
     'groups'            => 'Groups',
     'users'             => 'Users',
+    'keys'              => 'SSH Keys',
     'created'           => 'Created',
     'edit'              => 'Edit',
     'confirm'           => 'Confirm',

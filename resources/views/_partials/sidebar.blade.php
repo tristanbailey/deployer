@@ -31,6 +31,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ Request::is('admin/projects') ? 'active' : null }}"><a href="{{ route('admin.projects.index') }}">{{ Lang::get('app.projects') }}</a></li>
+                    <li class="{{ Request::is('admin/keys') ? 'active' : null }}"><a href="{{ route('admin.keys.index') }}">{{ Lang::get('app.keys') }}</a></li>
                     <li class="{{ Request::is('admin/templates*') ? 'active' : null }}"><a href="{{ route('admin.templates.index') }}">{{ Lang::get('app.templates') }}</a></li>
                     <li class="{{ Request::is('admin/groups') ? 'active' : null }}"><a href="{{ route('admin.groups.index') }}">{{ Lang::get('app.groups') }}</a></li>
                     <li class="{{ Request::is('admin/users') ? 'active' : null }}"><a href="{{ route('admin.users.index') }}">{{ Lang::get('app.users') }}</a></li>
