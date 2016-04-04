@@ -15,4 +15,14 @@ class Key extends Model
      * @var array
      */
     protected $fillable = ['name', 'private_key', 'public_key'];
+
+    /**
+     * Has many relationship.
+     *
+     * @return Project
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

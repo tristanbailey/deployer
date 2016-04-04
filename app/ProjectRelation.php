@@ -21,6 +21,16 @@ abstract class ProjectRelation extends Model
     }
 
     /**
+     * Belongs to relationship.
+     *
+     * @return Key
+     */
+    public function key()
+    {
+        return $this->belongsTo(Key::class);
+    }
+
+    /**
      * Has many relationship.
      *
      * @return Server
