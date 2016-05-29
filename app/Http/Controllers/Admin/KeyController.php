@@ -4,7 +4,7 @@ namespace REBELinBLUE\Deployer\Http\Controllers\Admin;
 
 use REBELinBLUE\Deployer\Http\Controllers\Resources\ResourceController as Controller;
 use REBELinBLUE\Deployer\Http\Requests\StoreKeyRequest;
-use REBELinBLUE\Deployer\Repositories\Contracts\KeyRepositoryInterface;
+use REBELinBLUE\Deployer\Contracts\Repositories\KeyRepositoryInterface;
 
 /**
  * SSH key management controller.
