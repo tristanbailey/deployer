@@ -70,8 +70,6 @@ class Template extends Model implements PresentableInterface
             $model->is_template = true;
             $model->repository = '';
             $model->hash = '';
-            //$model->private_key = '';
-            //$model->public_key = '';
 
             return true;
         });
