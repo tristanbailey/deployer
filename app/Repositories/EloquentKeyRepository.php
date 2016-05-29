@@ -2,8 +2,8 @@
 
 namespace REBELinBLUE\Deployer\Repositories;
 
+use REBELinBLUE\Deployer\Contracts\Repositories\KeyRepositoryInterface;
 use REBELinBLUE\Deployer\Key;
-use REBELinBLUE\Deployer\Repositories\Contracts\KeyRepositoryInterface;
 use REBELinBLUE\Deployer\Repositories\EloquentRepository;
 
 /**
