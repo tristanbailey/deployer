@@ -30,9 +30,9 @@ return [
     'build_status'      => 'Build Status',
     'app_status'        => 'Application Status',
     'heartbeats_status' => 'Heartbeat Status',
-    'view_ssh_key'      => 'View the SSH Key',
-    'private_ssh_key'   => 'Private SSH Key',
-    'public_ssh_key'    => 'Public SSH Key',
+    'view_ssh_key'      => 'View the SSH key',
+    'private_ssh_key'   => 'Private SSH key',
+    'public_ssh_key'    => 'Public SSH key',
     'ssh_key'           => 'SSH key',
     'ssh_key_info'      => 'If you have a specific private key you wish to use you can paste it here. The key must ' .
                            'not have a passphrase.',

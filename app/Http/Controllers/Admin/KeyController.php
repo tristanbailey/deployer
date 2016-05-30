@@ -2,9 +2,10 @@
 
 namespace REBELinBLUE\Deployer\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Lang;
+use REBELinBLUE\Deployer\Contracts\Repositories\KeyRepositoryInterface;
 use REBELinBLUE\Deployer\Http\Controllers\Resources\ResourceController as Controller;
 use REBELinBLUE\Deployer\Http\Requests\StoreKeyRequest;
-use REBELinBLUE\Deployer\Contracts\Repositories\KeyRepositoryInterface;
 
 /**
  * SSH key management controller.
@@ -24,8 +25,11 @@ class KeyController extends Controller
 
     public function index()
     {
-        return [
-            'keys' => $this->repository->getAll(),
-        ];
+        $keys = $this->repository->getAll();
+
+        return view('admin.keys.listing', [
+            'title' => Lang::get('keys.manage'),
+            'keys'  => $keys->toJson(), // Because PresentableInterface toJson() is not working in the view
+        ]);
     }
 }
