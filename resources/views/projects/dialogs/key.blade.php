@@ -11,7 +11,7 @@
                     <p>{!! Lang::get('projects.git_keys') !!}</p>
                 </div>
 
-                <pre>{{ $project->public_key }}</pre>
+                <pre>{{ $project->key->public_key }}</pre>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ Lang::get('app.close') }}</button>
