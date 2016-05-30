@@ -65,10 +65,12 @@
                     </div>
                     <hr />
                     @endif
+
                     <div class="form-group">
                         <label for="deployment_reason">{{ Lang::get('deployments.describe_reason') }}</label>
                         <textarea rows="10" id="deployment_reason" class="form-control" name="reason" placeholder="For example, Allows users to reset their password"></textarea>
                     </div>
+
                     @if (count($optional))
                     <div class="form-group">
                         <label for="command_servers">{{ Lang::get('deployments.optional') }}</label>

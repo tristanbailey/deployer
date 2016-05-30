@@ -53,9 +53,9 @@ class EloquentProjectRepository extends EloquentRepository implements ProjectRep
             unset($fields['template_id']);
         }
 
-        if (array_key_exists('private_key', $fields) && empty($fields['private_key'])) {
-            unset($fields['private_key']);
-        }
+        // if (array_key_exists('private_key', $fields) && empty($fields['private_key'])) {
+        //     unset($fields['private_key']);
+        // }
 
         $project = $this->model->create($fields);
 
@@ -79,13 +79,13 @@ class EloquentProjectRepository extends EloquentRepository implements ProjectRep
     {
         $project = $this->getById($model_id);
 
-        if (array_key_exists('private_key', $fields)) {
-            if (empty($fields['private_key'])) {
-                unset($fields['private_key']);
-            } else {
-                $project->public_key = '';
-            }
-        }
+        // if (array_key_exists('private_key', $fields)) {
+        //     if (empty($fields['private_key'])) {
+        //         unset($fields['private_key']);
+        //     } else {
+        //         $project->public_key = '';
+        //     }
+        // }
 
         $project->update($fields);
 

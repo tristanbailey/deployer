@@ -95,17 +95,44 @@
                             </div>
 
                             <div class="tab-pane" id="project_key">
-                                @if (!$is_secure)
-                                <div class="callout callout-warning">
-                                    <i class="icon fa fa-warning"></i> <strong>{{ Lang::get('app.warning') }}</strong>
-                                    {{ Lang::get('projects.insecure') }}
-                                </div>
-                                @endif
-
                                 <div class="form-group">
-                                    <label>{{ Lang::get('projects.private_ssh_key') }}</label>
-                                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="{{ Lang::get('projects.ssh_key_info') }}"></i>
-                                    <textarea name="private_key" rows="10" id="project_private_key" class="form-control" placeholder="{{ Lang::get('projects.ssh_key_example') }}"></textarea>
+
+                                    <div class="radio">
+                                        <label for="project_ssh_generate">
+                                            <input class="sshkey" id="project_ssh_generate" name="sshkey" value="generate" type="radio" /> <strong>{{ Lang::get('projects.generate_ssh_key') }}</strong>
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <label for="project_key_existing">
+                                            <input class="sshkey" name="sshkey" id="project_key_existing" value="existing" type="radio" /> <strong>{{ Lang::get('projects.use_ssh_key') }}</strong>
+
+                                            <div class="sshkey-container">
+                                                <select id="project_key_id" name="key_id" class="form-control">
+                                                    @foreach($keys as $key)
+                                                        <option value="{{ $key->id }}">{{ $key->name }} ({{ $key->fingerprint }})</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <label for="private_key_supply">
+                                            <input class="sshkey" name="sshkey" id="private_key_supply" value="supply" type="radio" /> <strong>{{ Lang::get('projects.private_ssh_key') }}</strong>
+
+                                            <div class="sshkey-container">
+                                                @if (!$is_secure)
+                                                <div class="callout callout-warning">
+                                                    <i class="icon fa fa-warning"></i> <strong>{{ Lang::get('app.warning') }}</strong>
+                                                    {{ Lang::get('projects.insecure') }}
+                                                </div>
+                                                @endif
+
+                                                <textarea name="private_key" rows="10" id="project_private_key" class="form-control" placeholder="{{ Lang::get('projects.ssh_key_info') }}"></textarea>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

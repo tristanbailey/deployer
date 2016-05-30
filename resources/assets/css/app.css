@@ -213,3 +213,6 @@ div#project div.nav-tabs-custom > .tab-content {
 div#project div.callout-danger {
     margin: 15px;
 }
+div.sshkey-container {
+    margin-top: 5px;
+}

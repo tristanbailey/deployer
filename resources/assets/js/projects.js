@@ -44,7 +44,23 @@ var app = app || {};
         $('button.close', dialog).hide();
     });
 
-   // FIXME: This seems very wrong
+    $('select#project_key_id').select2({
+        width: '100%',
+        minimumResultsForSearch: 6
+    });
+
+    $('.sshkey:radio').on('change', function (event) {
+        var target = $(event.currentTarget);
+
+        $('div.sshkey-container').hide();
+        if (target.val() === 'existing') {
+            $('#project_key_id').parent('div').show();
+        } else if (target.val() === 'supply') {
+            $('#project_private_key').parent('div').show();
+        }
+    });
+
+    // FIXME: This seems very wrong
     $('#project').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var modal = $(this);
@@ -58,9 +74,14 @@ var app = app || {};
 
         $('.nav-tabs a:first', modal).tab('show');
 
+        $('#project_key div.radio').show();
+        $('div.sshkey-container').hide();
+
         if (button.hasClass('btn-edit')) {
             title = Lang.get('projects.edit');
             $('.btn-danger', modal).show();
+            $('#project_ssh_generate').parent('label').parent('div').hide();
+            $('#project_key_id').parent('div').show();
         } else {
             $('#template-list', modal).show();
             $('#project_id').val('');
@@ -74,6 +95,7 @@ var app = app || {};
             $('#project_allow_other_branch').prop('checked', true);
             $('#project_include_dev').prop('checked', false);
             $('#project_private_key').val('');
+            $('#project_ssh_generate').prop('checked', true);
         }
 
         modal.find('.modal-title span').text(title);
@@ -135,10 +157,11 @@ var app = app || {};
             builds_to_keep:     $('#project_builds_to_keep').val(),
             url:                $('#project_url').val(),
             build_url:          $('#project_build_url').val(),
-            template_id:        $('#project_template_id') ? $('#project_template_id').val() : null,
+            template_id:        $('#project_template_id') && $('#project_template_id').val() ? parseInt($('#project_template_id').val(), 10) : null,
             allow_other_branch: $('#project_allow_other_branch').is(':checked'),
             include_dev:        $('#project_include_dev').is(':checked'),
-            private_key:        $('#project_private_key').val()
+            key_id:             $('input[name=sshkey]:checked').val() === 'existing' ? parseInt($('#project_key_id').val(), 10) : null,
+            private_key:        $('input[name=sshkey]:checked').val() === 'supply' ? $('#project_private_key').val() : null
         }, {
             wait: true,
             success: function(model, response, options) {
@@ -293,6 +316,8 @@ var app = app || {};
             $('#project_allow_other_branch').prop('checked', (this.model.get('allow_other_branch') === true));
             $('#project_include_dev').prop('checked', (this.model.get('include_dev') === true));
             $('#project_private_key').val('');
+            $('#project_key_id').val(this.model.get('key_id'));
+            $('#project_key_existing').prop('checked', true);
         }
     });
 

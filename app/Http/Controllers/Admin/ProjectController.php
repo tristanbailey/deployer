@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use REBELinBLUE\Deployer\Contracts\Repositories\GroupRepositoryInterface;
 use REBELinBLUE\Deployer\Contracts\Repositories\ProjectRepositoryInterface;
+use REBELinBLUE\Deployer\Contracts\Repositories\KeyRepositoryInterface;
 use REBELinBLUE\Deployer\Contracts\Repositories\TemplateRepositoryInterface;
 use REBELinBLUE\Deployer\Http\Controllers\Resources\ResourceController as Controller;
 use REBELinBLUE\Deployer\Http\Requests\StoreProjectRequest;
@@ -31,12 +32,14 @@ class ProjectController extends Controller
      *
      * @param  TemplateRepositoryInterface $templateRepository
      * @param  GroupRepositoryInterface    $groupRepository
+     * @param  KeyRepositoryInterface      $keyRepository
      * @param  Request                     $request
      * @return Response
      */
     public function index(
         TemplateRepositoryInterface $templateRepository,
         GroupRepositoryInterface $groupRepository,
+        KeyRepositoryInterface $keyRepository,
         Request $request
     ) {
         $projects = $this->repository->getAll();
@@ -45,6 +48,7 @@ class ProjectController extends Controller
             'is_secure' => $request->secure(),
             'title'     => Lang::get('projects.manage'),
             'templates' => $templateRepository->getAll(),
+            'keys'      => $keyRepository->getAll(),
             'groups'    => $groupRepository->getAll(),
             'projects'  => $projects->toJson(), // Because PresentableInterface toJson() is not working in the view
         ]);
@@ -69,7 +73,7 @@ class ProjectController extends Controller
             'template_id',
             'allow_other_branch',
             'include_dev',
-            'private_key'
+            'key_id'
         ));
     }
 
@@ -92,7 +96,7 @@ class ProjectController extends Controller
             'build_url',
             'allow_other_branch',
             'include_dev',
-            'private_key'
+            'key_id'
         ), $project_id);
     }
 }
